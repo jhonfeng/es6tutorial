@@ -65,11 +65,12 @@ String.raw({ raw: ['foo', 'bar'] }, 1 + 2) // "foo3bar"
 String.raw = function (strings, ...values) {
   let output = '';
   let index;
-  for (index = 0; index < values.length; index++) {
-    output += strings.raw[index] + values[index];
+  for (index = 0; index < strings.raw.length; index++) {
+    output += strings.raw[index];
+    if(values[index]) {
+        output += values[index];
+    }
   }
-
-  output += strings.raw[index]
   return output;
 }
 ```
